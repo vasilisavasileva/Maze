@@ -1,0 +1,16 @@
+﻿<Properties StartupConfiguration="{F417D238-0CAB-D962-70EA-AA2442819875}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MazeSpawner.cs">
+    <Files>
+      <File FileName="Assets/MazeSpawner.cs" Line="21" Column="61" />
+      <File FileName="Assets/MazeGenerator.cs" Line="121" Column="85" />
+      <File FileName="Assets/Cell.cs" Line="8" Column="34" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="1d277def-645b-4a5d-b97c-f0fc19949f1e" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
