@@ -1,14 +1,20 @@
 ﻿<Properties StartupConfiguration="{F417D238-0CAB-D962-70EA-AA2442819875}|">
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MazeSpawner.cs">
     <Files>
-      <File FileName="Assets/MazeSpawner.cs" Line="21" Column="61" />
-      <File FileName="Assets/MazeGenerator.cs" Line="121" Column="85" />
-      <File FileName="Assets/Cell.cs" Line="8" Column="34" />
+      <File FileName="Assets/MazeSpawner.cs" Line="22" Column="127" />
+      <File FileName="Assets/MazeGenerator.cs" Line="121" Column="51" />
     </Files>
+    <Pads>
+      <Pad Id="ClassPad">
+        <State name="__root__">
+          <Node name="Maze3D" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="1d277def-645b-4a5d-b97c-f0fc19949f1e" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="4e7740b1-0e05-43da-9f2c-09192afc8196" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

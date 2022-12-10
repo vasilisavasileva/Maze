@@ -358,6 +358,8 @@
 "Assets/Cell.cs"
 "Assets/MazeGenerator.cs"
 "Assets/MazeSpawner.cs"
+"Assets/PlayerControls.cs"
+"Assets/PlayerControls3D.cs"
 -langversion:9.0
 
 /deterministic
