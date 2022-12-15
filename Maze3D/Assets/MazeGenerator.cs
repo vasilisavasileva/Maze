@@ -1,50 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
+using Assets;
 using UnityEngine;
 
-public class MazeGeneratorCell //массив ячеек, который вернется в качестве лабиринта
-{
-    public int X;
-    public int Y;
 
-    public bool WallLeft = true; //все стены по умолчанию включены
-    public bool WallBottom = true; //а затем алгоритм будет удалять стены с помощью recursive backtracking
-
-    public bool Visited = false;
-    public int DistanceFromStart;
-}
 
 public class MazeGenerator
 {
     public int Width = 23;
     public int Height = 15;
 
-    public MazeGeneratorCell[,] GenerateMaze() //создаем двумерный массив ячеек
+    public Maze GenerateMaze() //создаем лабиринт
     {
-        MazeGeneratorCell[,] maze = new MazeGeneratorCell[Width, Height];
+        MazeGeneratorCell[,] cells = new MazeGeneratorCell[Width, Height];
 
-        for (int x = 0; x<maze.GetLength(0); x++)
+        for (int x = 0; x<cells.GetLength(0); x++)
         {
-            for (int y = 0; y<maze.GetLength(1); y++)
+            for (int y = 0; y<cells.GetLength(1); y++)
             {
-                maze[x, y] = new MazeGeneratorCell { X = x, Y = y }; //заполнение массива нулями
+                cells[x, y] = new MazeGeneratorCell { X = x, Y = y }; //заполнение массива нулями
             }
         }
 
         //убираем лишние стены сверху и справа
-        for (int x = 0; x < maze.GetLength(0); x++)
+        for (int x = 0; x < cells.GetLength(0); x++)
         {
-            maze[x, Height - 1].WallLeft = false;
+            cells[x, Height - 1].WallLeft = false;
         }
 
-        for (int y = 0; y < maze.GetLength(1); y++)
+        for (int y = 0; y < cells.GetLength(1); y++)
         {
-            maze[Width - 1, y].WallBottom = false;
+            cells[Width - 1, y].WallBottom = false;
         }
 
-        RemoveWallsWithBacktracker(maze);
+        RemoveWallsWithBacktracker(cells);
 
-        PlaceMazeExit(maze);
+        Maze maze = new Maze();
+
+        maze.cells = cells;
+        maze.finishPosition = PlaceMazeExit(cells);
 
         return maze;
     }
@@ -76,8 +70,8 @@ public class MazeGenerator
 
                 chosen.Visited = true; //отмечаем ячейку, чтобы еще раз через неё не пойти
                 stack.Push(chosen); //добавляем её в список посещенных ячеек
+                chosen.DistanceFromStart = current.DistanceFromStart + 1; 
                 current = chosen; //и делаем активной
-                chosen.DistanceFromStart = stack.Count; //массив дистанции от начала, создан для генерации выхода
             }
             else
             {
@@ -101,7 +95,7 @@ public class MazeGenerator
         }
     }
 
-    private void PlaceMazeExit(MazeGeneratorCell[,] maze)
+    private Vector2Int PlaceMazeExit(MazeGeneratorCell[,] maze)
     {
         MazeGeneratorCell furthest = maze[0,0];
 
@@ -123,5 +117,7 @@ public class MazeGenerator
         else if (furthest.Y == 0) furthest.WallBottom = false;
         else if (furthest.X == Width - 2) maze[furthest.X + 1, furthest.Y].WallLeft = false;
         else if (furthest.Y == Height - 2) maze[furthest.X, furthest.Y+1].WallBottom = false;
+
+        return new Vector2Int(furthest.X, furthest.Y);
     }
 }

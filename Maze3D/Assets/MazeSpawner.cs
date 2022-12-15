@@ -1,32 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
+using Assets;
 using UnityEngine;
 
 public class MazeSpawner : MonoBehaviour
 {
-    public GameObject CellPrefab;
-
+    public Cell CellPrefab;
     public Vector3 CellSize = new Vector3(1,1,0);
+    public ExitRenderer ExitRenderer;
 
-    void Start()
+    public Maze maze; 
+
+    private void Start()
     {
         MazeGenerator generator = new MazeGenerator();
-        MazeGeneratorCell[,] maze = generator.GenerateMaze();
+        maze = generator.GenerateMaze();
 
-        for (int x = 0; x < maze.GetLength(0); x++)
+        for (int x = 0; x < maze.cells.GetLength(0); x++)
         {
-            for (int y = 0; y < maze.GetLength(1); y++)
+            for (int y = 0; y < maze.cells.GetLength(1); y++)
             {
                 Cell c = Instantiate(CellPrefab, new Vector3(x * CellSize.x, y * CellSize.y, y * CellSize.z), Quaternion.identity).GetComponent<Cell>();
 
-                c.WallLeft.SetActive(maze[x, y].WallLeft); //делаем стену активной, если такая стена есть в переданном массиве
-                c.WallBottom.SetActive(maze[x, y].WallBottom);
+                c.WallLeft.SetActive(maze.cells[x, y].WallLeft); //делаем стену активной, если такая стена есть в переданном массиве
+                c.WallBottom.SetActive(maze.cells[x, y].WallBottom);
             }
         }
+
+        ExitRenderer.DrawExit();
     }
 
-    void Update()
-    {
-        
-    }
 }

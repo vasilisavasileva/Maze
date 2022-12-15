@@ -57,10 +57,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/MazeSpawner.cs" />
+    <Compile Include="Assets/Maze.cs" />
     <Compile Include="Assets/Cell.cs" />
-    <Compile Include="Assets/MazeGenerator.cs" />
     <Compile Include="Assets/PlayerControls.cs" />
+    <Compile Include="Assets/MazeGenerator.cs" />
     <Compile Include="Assets/PlayerControls3D.cs" />
+    <Compile Include="Assets/ExitRenderer.cs" />
+    <Compile Include="Assets/CameraTrack.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
