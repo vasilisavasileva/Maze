@@ -8,6 +8,7 @@ public class MazeSpawner : MonoBehaviour
     public Cell CellPrefab;
     public Vector3 CellSize = new Vector3(1,1,0);
     public ExitRenderer ExitRenderer;
+    public GameObject PillPrefab;
 
     public Maze maze; 
 
@@ -26,8 +27,17 @@ public class MazeSpawner : MonoBehaviour
                 c.WallBottom.SetActive(maze.cells[x, y].WallBottom);
             }
         }
-
+        InstantiatePills();
         ExitRenderer.DrawExit();
     }
 
+    private void InstantiatePills()
+    {
+        for(int i = 0; i < 25; i++)
+        {
+            Vector2Int position = maze.pills[i];
+            GameObject pill = Instantiate(PillPrefab, new Vector3((position.x + 0.5f)*CellSize.x, 0.3f* CellSize.x, (position.y + 0.5f)*CellSize.x), Quaternion.identity);
+
+        }
+    }
 }

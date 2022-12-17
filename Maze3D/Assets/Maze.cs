@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 namespace Assets
 {
@@ -6,6 +7,7 @@ namespace Assets
     {
         public MazeGeneratorCell[,] cells;
         public Vector2Int finishPosition;
+        public List<Vector2Int> pills;
     }
 }
 
